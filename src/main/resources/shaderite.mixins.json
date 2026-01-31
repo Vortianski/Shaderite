@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "xox.labvorty.shaderite.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "PostChainMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
