@@ -3,7 +3,8 @@
   "package": "xox.labvorty.shaderite.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "PostChainMixin"
+    "PostChainMixin",
+    "EffectInstanceMixin"
   ],
   "injectors": {
     "defaultRequire": 1

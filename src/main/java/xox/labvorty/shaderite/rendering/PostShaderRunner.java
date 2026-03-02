@@ -6,6 +6,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderFrameEvent;
+import xox.labvorty.shaderite.Shaderite;
 import xox.labvorty.shaderite.shader.PostShaderRunnerHandler;
 
 /**
@@ -23,9 +24,18 @@ public class PostShaderRunner {
         if (player != null) {
             if (PostShaderRunnerHandler.run) {
                 try {
-                    minecraft.gameRenderer.loadEffect(
-                            PostShaderRunnerHandler.getShader()
-                    );
+                    if (minecraft.gameRenderer.currentEffect() == null) {
+                        minecraft.gameRenderer.loadEffect(
+                                PostShaderRunnerHandler.getShader()
+                        );
+                    } else if (minecraft.gameRenderer.currentEffect() != null) {
+                        if (!minecraft.gameRenderer.currentEffect().getName().equals(PostShaderRunnerHandler.getShader().toString())) {
+                            minecraft.gameRenderer.loadEffect(
+                                    PostShaderRunnerHandler.getShader()
+                            );
+                        }
+                    }
+
                     PostShaderRunnerHandler.setShouldRun(false);
                 } catch (Exception e) {
                     e.printStackTrace();
